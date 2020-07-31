@@ -1,18 +1,16 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:latest'
-            args '-p 3000:3000'
-        }
-    }
-    
+    agent none        
     stages {
+        agent {
+            docker {
+                image 'python:2-alpine'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'echo $PATH'
-                sh 'node -v'
-                sh 'npm -v'
-                sh 'npm install'
+                sh 'python -m py_compile sources/add2vals.py sources/calc.py'
+                stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
         }
         
