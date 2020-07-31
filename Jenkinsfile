@@ -9,8 +9,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'ls -la'
-                sh 'sudo npm install'
+                sh 'echo $PATH'
+                sh 'node -v'
+                sh 'npm -v'
             }
         }
         
