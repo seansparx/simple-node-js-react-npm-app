@@ -12,6 +12,7 @@ pipeline {
                 sh 'echo $PATH'
                 sh 'node -v'
                 sh 'npm -v'
+                sh 'npm install'
             }
         }
         
